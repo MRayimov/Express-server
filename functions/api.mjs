@@ -2,6 +2,7 @@ import express from "express";
 import serverless from "serverless-http";
 const app = express();
 
+app.use(express.json());
 const db = [];
 
 app.post("/todo", (req, res) => {
