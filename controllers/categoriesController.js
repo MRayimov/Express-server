@@ -1,6 +1,6 @@
 import { APIFeatures } from "../utils/apiFeatures.js";
 import { Categories } from "../models/categoriesModel.js";
-import catchAsync from "../utils/catchAsync.js";
+import { catchAsync } from "../utils/catchAsync.js";
 export const getAllCategories = catchAsync(async (req, res) => {
   const features = new APIFeatures(Categories.find(), req.query)
     .filter()

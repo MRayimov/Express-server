@@ -1,6 +1,6 @@
 import { APIFeatures } from "../utils/apiFeatures.js";
 import { Products } from "../models/productsModel.js";
-import catchAsync from "../utils/catchAsync.js";
+import { catchAsync } from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
 export const getAllProducts = catchAsync(async (req, res, next) => {
   const features = new APIFeatures(Products.find(), req.query)
