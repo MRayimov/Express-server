@@ -3,11 +3,11 @@ import * as categoriesController from "../controllers/categoriesController.js";
 import * as authController from "../controllers/authController.js";
 export const categoriesRoutes = express.Router();
 
-router
+categoriesRoutes
   .route("/")
   .get(categoriesController.getAllCategories)
   .post(authController.protect, categoriesController.createCategory);
-router
+categoriesRoutes
   .route("/:id")
   .get(categoriesController.getCategory)
   .patch(authController.protect, categoriesController.updateCategory)
