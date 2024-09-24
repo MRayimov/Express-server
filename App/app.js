@@ -9,11 +9,11 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Welcome to the server!");
 });
-// app.use("/categories", categoriesRoutes);
-// app.use("/products", productsRoutes);
-// app.use("/users", authRoutes);
+app.use("/categories", categoriesRoutes);
+app.use("/products", productsRoutes);
+app.use("/users", authRoutes);
 // app.all("*", (req, res, next) => {
 //   return next(new AppError(`Can't find ${req.originalUrl} on this server!`));
 // });
 
-// app.use(errorController);
+app.use(errorController);
