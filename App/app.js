@@ -11,9 +11,9 @@ app.get("/", (req, res) => {
 });
 app.use("/categories", categoriesRoutes);
 app.use("/products", productsRoutes);
-app.use("/users", authRoutes);
+// app.use("/users", authRoutes);
 // app.all("*", (req, res, next) => {
 //   return next(new AppError(`Can't find ${req.originalUrl} on this server!`));
 // });
 
-app.use(errorController);
+// app.use(errorController);
