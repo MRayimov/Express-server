@@ -1,6 +1,6 @@
 import { configDotenv } from "dotenv";
 import mongoose, { version } from "mongoose";
-import serverless from "serverless-http";
+
 configDotenv({ path: "./config.env" });
 import { app } from "./app.js";
 
@@ -13,4 +13,7 @@ mongoose.connect(DB).then(() => {
 });
 
 const port = process.env.PORT;
-export const handler = serverless(app);
+
+app.listen(port, () => {
+  console.log(`Server listening on http://localhost:${port}`);
+});
