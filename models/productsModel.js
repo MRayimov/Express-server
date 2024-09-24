@@ -1,40 +1,31 @@
 import mongoose, { Schema } from "mongoose";
 import { Categories } from "./categoriesModel.js";
-
-const productsSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    unique: true,
-    required: [true, "Product must have a name"],
-    trim: true,
-    maxLength: [40, "Product name can not exceed 20 characters"],
-  },
-  color: {
-    type: [String],
-    required: [true, "Product must have color"],
-  },
-  price: {
-    type: Number,
-    required: [true, "Product must have price"],
-  },
-  quantity: {
-    type: Number,
-    required: [true, "Product must have quantity"],
-  },
+import Joi from "joi";
+import JoigooseModule from "joigoose";
+const Joigoose = JoigooseModule(mongoose);
+const joiProductsSchema = Joi.object({
+  name: Joi.string()
+    .min(2)
+    .max(30)
+    .required()
+    .meta({
+      _mongoose: { unique: true },
+    })
+    .pattern(/[a-zA-Z]/),
+  color: Joi.array().items(Joi.string()).required(),
+  price: Joi.number().required(),
+  quantity: Joi.number().required(),
   createdAt: {
-    type: Date,
+    type: Joi.date(),
     default: Date.now(),
     select: false,
   },
-  categoryId: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: "categories",
-  },
-  category: {
-    type: String,
-  },
+  categoryId: Joi.string().meta({
+    _mongoose: { type: "ObjectId", ref: "categories" },
+  }),
+  category: Joi.string(),
 });
+const productsSchema = new mongoose.Schema(Joigoose.convert(joiProductsSchema));
 productsSchema.pre("save", async function (next) {
   if (this.isModified("categoryId")) {
     // Fetch the category document using the id
