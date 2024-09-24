@@ -6,7 +6,7 @@ import swaggerUi from "swagger-ui-express";
 import yamljs from "yamljs";
 configDotenv({ path: "./config.env" });
 import { app } from "./App/app.js";
-const swaggerDocument = yamljs.load({ path: "./swagger.yaml" }); // Adjust path as needed
+const swaggerDocument = yamljs.load("./swagger.yaml"); // Adjust path as needed
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

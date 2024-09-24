@@ -1,7 +1,7 @@
 import express from "express";
 import { categoriesRoutes } from "../routes/categoriesRoutes.js";
 import { productsRoutes } from "../routes/productsRoutes.js";
-import { AppError } from "../utils/appError.js";
+import AppError from "../utils/appError.js";
 import { authRoutes } from "../routes/authRoutes.js";
 import { errorController } from "../controllers/errorController.js";
 export const app = express();
