@@ -4,7 +4,7 @@ import productsRoutes from "./routes/productsRoutes.js";
 import AppError from "./utils/appError.js";
 import authRoutes from "./routes/authRoutes.js";
 import { errorController } from "./controllers/errorController.js";
-export const app = express();
+const app = express();
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Welcome to the server!");
@@ -17,3 +17,4 @@ app.all("*", (req, res, next) => {
 });
 
 app.use(errorController);
+export default app;
