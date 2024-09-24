@@ -6,7 +6,6 @@ import { authRoutes } from "./routes/authRoutes.js";
 import { errorController } from "./controllers/errorController.js";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggetUi from "swagger-ui-express";
-import { version } from "mongoose";
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -16,32 +15,9 @@ const options = {
     },
     servers: [{ url: "https://mr-work.netlify.app/" }],
   },
-  apis: [`${import.meta.dirname}/routes/*.js`],
+  apis: [`../routes/*.js`],
 };
-// Sample route
-/**
- * @swagger
- * paths:
- *  /api/user:
- *    get:
- *     summary: Retrieve a list of users
- *     responses:
- *       200:
- *         description: A list of users
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: integer
- *                     example: 1
- *                   name:
- *                     type: string
- *                     example: John Doe
- */
+
 const swaggerSpec = swaggerJSDoc(options);
 export const app = express();
 app.use("/api-docs", express.static("dist/api-docs"));
