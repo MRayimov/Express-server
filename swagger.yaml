@@ -1,0 +1,32 @@
+openapi: 3.0.0
+info:
+  title: Your API
+  version: "1.0.0"
+  description: Your API description
+servers:
+  - url: https://mr-work.netlify.app/
+paths:
+  /categories:
+    get:
+      summary: Get all categories
+      responses:
+        "200":
+          description: A list of categories.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /products:
+    get:
+      summary: Get all products
+      responses:
+        "200":
+          description: A list of products.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
