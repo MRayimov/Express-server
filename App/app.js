@@ -21,6 +21,7 @@ const options = {
 };
 const swaggerSpec = swaggerJSDoc(options);
 export const app = express();
+app.use("/api-docs", express.static("dist/api-docs"));
 app.use("/api-docs", swaggetUi.serve, swaggetUi.setup(swaggerSpec));
 app.use(express.json());
 app.get("/", (req, res) => {
