@@ -1,7 +1,7 @@
 import express from "express";
 import * as categoriesController from "../controllers/categoriesController.js";
 import * as authController from "../controllers/authController.js";
-const router = express.Router();
+export const categoriesRoutes = express.Router();
 
 router
   .route("/")
@@ -12,5 +12,3 @@ router
   .get(categoriesController.getCategory)
   .patch(authController.protect, categoriesController.updateCategory)
   .delete(authController.protect, categoriesController.deleteCategory);
-
-export default router;

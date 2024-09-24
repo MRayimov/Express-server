@@ -1,7 +1,7 @@
 import express from "express";
 import * as productsController from "../controllers/productsController.js";
 import * as authController from "../controllers/authController.js";
-const router = express.Router();
+export const productsRoutes = express.Router();
 
 router
   .route("/")
@@ -12,4 +12,3 @@ router
   .get(productsController.getProduct)
   .patch(authController.protect, productsController.updateProduct)
   .delete(authController.protect, productsController.deleteProduct);
-export default router;
