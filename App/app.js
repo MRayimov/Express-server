@@ -16,5 +16,5 @@ app.all("*", (req, res, next) => {
   return next(new AppError(`Can't find ${req.originalUrl} on this server!`));
 });
 
-app.use(errorController);
+// app.use(errorController);
 export default app;
