@@ -5,5 +5,4 @@ export const errorController = (err, req, res, next) => {
     status: err.status,
     message: err.message,
   });
-  return next();
 };
