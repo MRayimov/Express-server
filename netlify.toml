@@ -2,6 +2,6 @@
   functions="/"
 
 [[redirects]]
-  to = "/.netlify/functions/server"  # Point to your serverless function (server.js)
+  to = "/.netlify/functions/server/:splat"  # Point to your serverless function (server.js)
   from = "/*"
   status = 200
