@@ -2,7 +2,7 @@ import { configDotenv } from "dotenv";
 import mongoose from "mongoose";
 import serverless from "serverless-http";
 configDotenv({ path: "./config.env" });
-import app from "./App/app.js";
+import { app } from "./App/app.js";
 
 const DB = process.env.DATABASE.replace(
   "<db_password>",
