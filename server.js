@@ -6,7 +6,7 @@ import swaggerUi from "swagger-ui-express";
 configDotenv({ path: "./config.env" });
 import { app } from "./App/app.js";
 const options = {
-  defenition: {
+  definition: {
     openapi: "3.0.0",
     info: {
       title: "Welcome",
