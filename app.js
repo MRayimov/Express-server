@@ -6,6 +6,7 @@ import { authRoutes } from "./routes/authRoutes.js";
 import { errorController } from "./controllers/errorController.js";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggetUi from "swagger-ui-express";
+
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -15,7 +16,7 @@ const options = {
     },
     servers: [{ url: "https://mr-work.netlify.app/" }],
   },
-  apis: [`../routes/*.js`],
+  apis: [`${import.meta.url}/routes/*.js`],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
