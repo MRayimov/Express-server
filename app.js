@@ -5,7 +5,7 @@ import AppError from "./utils/appError.js";
 import { authRoutes } from "./routes/authRoutes.js";
 import { errorController } from "./controllers/errorController.js";
 import swaggerJSDoc from "swagger-jsdoc";
-import swaggetUi from "swagger-ui-express";
+import swaggerUi from "swagger-ui-express";
 
 const options = {
   definition: {
@@ -14,7 +14,7 @@ const options = {
       title: "Work Project",
       version: "1.0.0",
     },
-    servers: [{ url: "https://mr-work.netlify.app/" }],
+    servers: [{ url: "https://work-exam.onrender.com/" }],
   },
   apis: [`${import.meta.url}/routes/*.js`],
 };
@@ -22,7 +22,7 @@ const options = {
 const swaggerSpec = swaggerJSDoc(options);
 export const app = express();
 app.use("/api-docs", express.static("dist/api-docs"));
-app.use("/api-docs", swaggetUi.serve, swaggetUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Welcome to the server!");
