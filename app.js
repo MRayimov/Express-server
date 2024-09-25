@@ -16,7 +16,7 @@ const options = {
     },
     servers: [{ url: "https://work-exam.onrender.com/" }],
   },
-  apis: [`${import.meta.url}/routes/*.js`],
+  apis: [`${import.meta.dirname}/routes/*.js`],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
