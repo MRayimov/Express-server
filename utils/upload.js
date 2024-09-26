@@ -3,10 +3,10 @@ import path from "path";
 import multer from "multer";
 
 // Create uploads folder if it doesn't exist
-const uploadDir = path.join(__dirname, "../uploads");
-// if (!fs.existsSync(uploadDir)) {
-//   fs.mkdirSync(uploadDir);
-// }
+const uploadDir = path.join(import.meta.dirname, "../uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
 let storage = multer.diskStorage({
   destination: function (req, file, callback) {
