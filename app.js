@@ -14,7 +14,7 @@ const options = {
       title: "Work Project",
       version: "1.0.0",
     },
-    servers: [{ url: "https://work-exam.onrender.com/" }],
+    servers: [{ url: "http://localhost:10000" }],
   },
   apis: [`${import.meta.dirname}/routes/*.js`],
 };
