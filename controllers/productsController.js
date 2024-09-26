@@ -16,10 +16,13 @@ export const getAllProducts = catchAsync(async (req, res, next) => {
   });
 });
 export const createProduct = catchAsync(async (req, res, next) => {
-  const newTour = await Products.create(req.body);
+  const newProduct = await Products.create(req.body);
+  if (req.file) {
+    newCategory.image = req.file;
+  }
   res.status(201).json({
     status: "success",
-    data: { newTour },
+    data: { newProduct },
   });
 });
 export const getProduct = catchAsync(async (req, res, next) => {

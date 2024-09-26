@@ -24,6 +24,7 @@ const joiProductsSchema = Joi.object({
     _mongoose: { type: "ObjectId", ref: "categories" },
   }),
   category: Joi.string(),
+  image: Joi.object(),
 });
 const productsSchema = new mongoose.Schema(Joigoose.convert(joiProductsSchema));
 productsSchema.pre("save", async function (next) {

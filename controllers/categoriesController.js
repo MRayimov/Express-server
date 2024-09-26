@@ -18,12 +18,21 @@ export const getAllCategories = catchAsync(async (req, res) => {
   });
 });
 export const createCategory = catchAsync(async (req, res) => {
-  const newTour = await Categories.create(req.body);
+  const newCategory = await Categories.create({
+    name: req.body.name,
+    description: req.body.description,
+  });
+
+  if (req.file) {
+    newCategory.image = req.file;
+  }
+
   res.status(201).json({
     status: "success",
-    data: { newTour },
+    data: { newCategory },
   });
 });
+
 export const getCategory = catchAsync(async (req, res) => {
   const category = await Categories.findById(req.params.id);
   res.status(201).json({
