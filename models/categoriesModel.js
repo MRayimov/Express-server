@@ -36,12 +36,12 @@ const categoriesSchema = new mongoose.Schema(
 
 // Adding the virtual and custom methods
 categoriesSchema.virtual("productsCount").get(function () {
-  return this._productsCount; // Placeholder to hold the count
+  return this._productsCount;
 });
 
 categoriesSchema.methods.populateProductsCount = async function () {
   const productsCount = await Products.countDocuments({ categoryId: this._id });
-  this._productsCount = productsCount; // Assign the count dynamically
+  this._productsCount = productsCount;
 };
 
 // Create the Mongoose model

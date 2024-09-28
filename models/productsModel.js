@@ -35,12 +35,12 @@ const productsSchema = new mongoose.Schema(
   }
 );
 productsSchema.virtual("commentsCount").get(function () {
-  return this.__commentsCount; // Placeholder to hold the count
+  return this._commentsCount;
 });
 
 productsSchema.methods.populateCommentsCount = async function () {
   const commentsCount = await Comments.countDocuments({ productId: this._id });
-  this._commentsCount = commentsCount; // Assign the count dynamically
+  this._commentsCount = commentsCount;
 };
 
 productsSchema.pre("save", async function (next) {
