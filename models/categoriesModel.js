@@ -29,8 +29,8 @@ const joiCategoriesSchema = Joi.object({
 const categoriesSchema = new mongoose.Schema(
   Joigoose.convert(joiCategoriesSchema),
   {
-    toJSON: { virtuals: true }, // Add toJSON options here
-    toObject: { virtuals: true }, // Add toObject options here
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
 

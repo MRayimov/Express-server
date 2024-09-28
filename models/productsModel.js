@@ -31,6 +31,7 @@ const productsSchema = new mongoose.Schema(
   Joigoose.convert(joiProductsSchema),
   {
     toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
 productsSchema.virtual("commentsCount").get(function () {
