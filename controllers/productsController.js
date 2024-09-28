@@ -9,6 +9,9 @@ export const getAllProducts = catchAsync(async (req, res, next) => {
     .limitFields()
     .paginate();
   const products = await features.query;
+  for (let product of products) {
+    await product.populateProductsCount();
+  }
   res.status(200).json({
     status: "success",
     results: products.length,

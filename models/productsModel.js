@@ -1,5 +1,6 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 import { Categories } from "./categoriesModel.js";
+import { Comments } from "./commentsModel.js";
 import Joi from "joi";
 import JoigooseModule from "joigoose";
 const Joigoose = JoigooseModule(mongoose);
@@ -26,7 +27,21 @@ const joiProductsSchema = Joi.object({
   category: Joi.string(),
   image: Joi.object(),
 });
-const productsSchema = new mongoose.Schema(Joigoose.convert(joiProductsSchema));
+const productsSchema = new mongoose.Schema(
+  Joigoose.convert(joiProductsSchema),
+  {
+    toJSON: { virtuals: true },
+  }
+);
+productsSchema.virtual("commentsCount").get(function () {
+  return this._productsCount; // Placeholder to hold the count
+});
+
+productsSchema.methods.populateProductsCount = async function () {
+  const commentsCount = await Comments.countDocuments({ productId: this._id });
+  this._commentsCount = commentsCount; // Assign the count dynamically
+};
+
 productsSchema.pre("save", async function (next) {
   if (this.isModified("categoryId")) {
     // Fetch the category document using the id
