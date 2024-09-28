@@ -35,6 +35,9 @@ export const createCategory = catchAsync(async (req, res) => {
 
 export const getCategory = catchAsync(async (req, res) => {
   const category = await Categories.findById(req.params.id);
+  if (!category) {
+    return next(new AppError("No category found whith that id", 404));
+  }
   res.status(201).json({
     status: "success",
     data: { category },
@@ -45,6 +48,9 @@ export const updateCategory = catchAsync(async (req, res) => {
     new: true,
     runValidators: true,
   });
+  if (!category) {
+    return next(new AppError("No category found whith that id", 404));
+  }
   res.status(200).json({
     status: "success",
     data: { category },
@@ -52,6 +58,9 @@ export const updateCategory = catchAsync(async (req, res) => {
 });
 export const deleteCategory = catchAsync(async (req, res) => {
   await Categories.findByIdAndDelete(req.params.id);
+  if (!category) {
+    return next(new AppError("No category found whith that id", 404));
+  }
   res.status(200).json({
     status: "success",
     data: null,

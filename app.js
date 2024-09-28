@@ -4,16 +4,18 @@ import { productsRoutes } from "./routes/productsRoutes.js";
 import AppError from "./utils/appError.js";
 import { authRoutes } from "./routes/authRoutes.js";
 import { errorController } from "./controllers/errorController.js";
-
+import { commentsRouter } from "./routes/commentsRoutes.js";
 export const app = express();
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
 app.get("/", (req, res) => {
   res.send("Welcome to the server!");
 });
+
+app.use("/uploads", express.static("uploads"));
 app.use("/categories", categoriesRoutes);
 app.use("/products", productsRoutes);
 app.use("/users", authRoutes);
+app.use("/comments", commentsRouter);
 app.all("*", (req, res, next) => {
   return next(new AppError(`Can't find ${req.originalUrl} on this server!`));
 });

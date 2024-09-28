@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import multer from "multer";
 
-// Create uploads folder if it doesn't exist
 const uploadDir = path.join(import.meta.dirname, "../uploads");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
@@ -28,6 +27,6 @@ export const upload = multer({
     }
   },
   limits: {
-    fileSize: 1024 * 1024 * 2, // Limit size to 2MB
+    fileSize: 1024 * 1024 * 2,
   },
 });
